@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Açaí Delivery</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f7f7;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #6a1b9a;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    .container {
+      padding: 1rem;
+    }
+    .product-card {
+      background: white;
+      border-radius: 12px;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .product-img {
+      width: 100%;
+      height: 200px;
+      background: #ddd;
+      border-radius: 8px;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #666;
+    }
+    .price {
+      font-size: 1.2rem;
+      color: #4caf50;
+      font-weight: bold;
+    }
+    .notification {
+      position: fixed;
+      bottom: 1rem;
+      right: 1rem;
+      background: white;
+      border-left: 5px solid #4caf50;
+      padding: 0.75rem 1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      border-radius: 6px;
+      display: none;
+      max-width: 250px;
+      font-size: 0.9rem;
+    }
+    .btn {
+      background: #6a1b9a;
+      color: white;
+      padding: 0.75rem 1.2rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 1rem;
+      margin-top: 1rem;
+    }
+    .btn:hover {
+      background: #4a148c;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Açaí Delivery</h1>
+  </header>
+  <div class="container">
+
+    <!-- COMBOS DE 2 COPOS -->
+    <div class="product-card">
+      <div class="product-img">[Imagem 2 Copos 300ml]</div>
+      <h2>2 Copos de Açaí 300ml</h2>
+      <p class="price">R$ 19,90</p>
+      <button class="btn" onclick="checkout('https://SEU-LINK-300ML-2')">Pagar com Pix</button>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">[Imagem 2 Copos 500ml]</div>
+      <h2>2 Copos de Açaí 500ml</h2>
+      <p class="price">R$ 22,90</p>
+      <button class="btn" onclick="checkout('https://SEU-LINK-500ML-2')">Pagar com Pix</button>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">[Imagem 2 Copos 700ml]</div>
+      <h2>2 Copos de Açaí 700ml</h2>
+      <p class="price">R$ 26,90</p>
+      <button class="btn" onclick="checkout('https://SEU-LINK-700ML-2')">Pagar com Pix</button>
+    </div>
+
+    <!-- COMBOS DE 1 COPO -->
+    <div class="product-card">
+      <div class="product-img">[Imagem 1 Copo 300ml]</div>
+      <h2>1 Copo de Açaí 300ml</h2>
+      <p class="price">R$ 14,90</p>
+      <button class="btn" onclick="checkout('https://SEU-LINK-300ML-1')">Pagar com Pix</button>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">[Imagem 1 Copo 500ml]</div>
+      <h2>1 Copo de Açaí 500ml</h2>
+      <p class="price">R$ 17,90</p>
+      <button class="btn" onclick="checkout('https://SEU-LINK-500ML-1')">Pagar com Pix</button>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">[Imagem 1 Copo 700ml]</div>
+      <h2>1 Copo de Açaí 700ml</h2>
+      <p class="price">R$ 21,90</p>
+      <button class="btn" onclick="checkout('https://SEU-LINK-700ML-1')">Pagar com Pix</button>
+    </div>
+
+  </div>
+
+  <div id="notif" class="notification"></div>
+
+  <script>
+    const notificacoes = [
+      "🔥 Os combos de 700ml estão esgotando rápido! Aproveite agora!",
+      "🕒 Só hoje: 1 copo com desconto especial no Pix!",
+      "🚀 Entrega rápida na sua região!",
+    ];
+    let index = 0;
+
+    function mostrarNotificacao() {
+      const notif = document.getElementById('notif');
+      notif.innerText = notificacoes[index];
+      notif.style.display = 'block';
+      setTimeout(() => { notif.style.display = 'none'; }, 5000);
+      index = (index + 1) % notificacoes.length;
+    }
+
+    setInterval(mostrarNotificacao, 7000);
+
+    function checkout(link) {
+      window.open(link, "_blank");
+    }
+  </script>
+</body>
+</html>
